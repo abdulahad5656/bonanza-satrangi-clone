@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles to match the original design */
+        .top-bar {
+            background-color: #FFD7D7;
+            font-size: 13px;
+            font-family: renner, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .middle-bar {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .logo img {
+            width: 300px;
+            height: auto;
+        }
+        .icons img {
+            width: 18px;
+            height: auto;
+        }
+        .bottom-bar {
+            border-top: 1px solid #e9ecef;
+            top: 71px;
+        }
+        .bottom-bar .nav-link {
+            color: rgb(0, 0, 1);
+            font-weight: lighter;
+            font-size: 12.5px;
+            letter-spacing: 1px;
+        }
+        .bottom-bar .nav-link:hover {
+            text-decoration: none;
+        }
+
+        .explore-button {
+    background-color: #FCDCDC; /* Light pinkish background color */
+    color: #000; /* Black text color */
+    border: 2px solid #000; /* Black border */
+    font-size: 16px;
+    width: 150px;
+    height: 40px;
+    text-align: center;
+}
+
+.explore-button:hover {
+    background-color: #FFD7D7; /* Slightly darker pink on hover */
+}
+
+
+
+
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .image-grid-item {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            overflow: hidden;
+        }
+        .image-grid-item.large {
+            grid-column: 2 / 4;
+            grid-row: 1 / 3;
+            height: 620px;
+        }
+        .image-grid-item:nth-child(1) { grid-column: 1 / 2; grid-row: 1; }
+        .image-grid-item:nth-child(2) { grid-column: 4 / 5; grid-row: 1; }
+        .image-grid-item:nth-child(4) { grid-column: 1 / 2; grid-row: 2; }
+        .image-grid-item:nth-child(5) { grid-column: 4 / 5; grid-row: 2; }
+        .image-grid-item:hover { filter: brightness(70%); }
+        .shop-now-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: transparent;
+            color: white;
+            width: 150px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease, border-bottom 2s ease;
+        }
+        .image-grid-item:hover .shop-now-button {
+            color: orangered;
+            opacity: 1;
+            border-bottom: 2px solid #fff;
+        }
+        .text-box {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 40px;
+            background-color: white;
+            padding: 5px 10px;
+            font-size: 16px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+/* Top Picks Section */
+.top-picks-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Button Styling */
+.custom-btn {
+    background-color: #FCDCDC; /* Light pink */
+    color: #000; /* Black text */
+    padding: 10px 20px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: lightgray;
+    color: #fff;
+}
+
+/* Ensure Buttons are Rounded */
+.btn.rounded-pill {
+    border-radius: 50px;
+}
+
+
+
+        .product-grid {
+            margin-top: 50px;
+        }
+        .product-item {
+            height: 70vh;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .product-image {
+            height: 70vh;
+
+            width: 100%;
+            padding-bottom: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.3s ease;
+        }
+        .product-item:hover .product-image#picone { background-image: url('logos/pic1-2.webp'); }
+        .product-item:hover .product-image#pictwo { background-image: url('logos/pic2-2.webp'); }
+        .product-item:hover .product-image#picthree { background-image: url('logos/pic3-2.webp'); }
+        .product-item:hover .product-image#picfour { background-image: url('logos/pic4-2.webp'); }
+        .product-name {
+            display: block;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .product-name:hover {
+            color: #000;
+        }
+        .product-price {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        .product-sizes {
+            margin-top: 10px;
+        }
+        .size {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .size:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+
+
+
+        .custom-bg {
+            background-color: #FCDCDC;
+        }
+        .shop-now-btn {
+            background-color: #FCDCDC;
+            color: black;
+            border: 2px solid #000;
+        }
+        .shop-now-btn:hover {
+            background-color: #000;
+            color: #FCDCDC;
+        }
+
+
+
+        .info-section {
+            background-color: #FCDCDC;
+            min-height: 50vh;
+            position: relative;
+            margin-top: 3rem;
+        }
+        .icon {
+            width: 30px;
+            height: 30px;
+        }
+        .info-text {
+            font-size: 15px;
+            color: #333;
+        }
+        .subscribe-btn {
+            background-color: #000;
+            color: #fff;
+        }
+        .subscribe-btn:hover {
+            background-color: #333;
+        }
+
+
+
+
+
+        .footer {
+            background-color: #f8f8f8;
+            border-top: 1px solid #ccc;
+        }
+        .footer h5 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .footer ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .footer ul li a {
+            color: #333;
+            text-decoration: none;
+            position: relative;
+            padding-left: 15px;
+        }
+        .footer ul li a:hover::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #000;
+        }
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            background-size: cover;
+            margin-right: 10px;
+        }
+        .footer-bottom {
+            border-top: 1px dotted #000;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar py-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <div class="shipping-info">Flat Rs. 200 shipping charges on all orders</div>
+                </div>
+                <div class="col-6 text-end">
+                    <div class="return-policy">No Return or Exchange on sale items</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Middle Bar -->
+    <div class="middle-bar bg-white py-3 position-sticky top-0 z-3">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <!-- Placeholder for potential left-side content -->
+                </div>
+                <div class="col-4 text-center">
+                    <div class="logo">
+                        <a href="#"><img src="Bonanza_Logo_500x_2x_a4ee20ed-344e-48db-85ed-bdc87c7b08cb (1).avif" alt="Logo"></a>
+                    </div>
+                </div>
+                <div class="col-4 text-end">
+                    <div class="icons d-flex justify-content-end gap-4">
+                        <a href="#"><img src="logos/truck.webp" alt="Delivery"></a>
+                        <a href="#"><img src="logos/search.jpeg" alt="search"></a>
+                        <a href="#"><img src="logos/account.webp" alt="Cart"></a>
+                        <a href="#"><img src="logos/heart_1.webp" alt="Profile"></a>
+                        <a href="checkout.html" target="_blank"><img src="logos/shopping-bag.webp" alt="Favourites"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <nav class="bottom-bar bg-white py-2 position-sticky z-3">
+        <div class="container-fluid">
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link" href="#">SUMMER COLLECTION</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">NEW ARRIVAL</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">READY TO WEAR</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">UNSTITCHED</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">LUXURY UNSTITCHED</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">COSMETICS</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">FRAGRANCES</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">MEN</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">SALE</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <!-- Image Section -->
+            <div class="col-12 text-center mt-5 ">
+                <a href="#">
+                    <img src="grid/Tile-Banner-1800-x1800_cf571d01-c836-47cd-95ed-aa172f80257b_800x.jpg" 
+                         alt="Sale Banner" class="w-100" >
+                </a>
+            </div>
+        </div>
+        
+        <!-- Video Section -->
+        <div class="row">
+            <div class="col-12 text-center mt-4">
+                <video class="w-100" controls autoplay>
+                    <!-- <source src="videos/mainpagevideo.mp4" type="video/mp4"> -->
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        
+        <!-- Button Section -->
+        <div class="row">
+            <div class="col-12 text-center mt-3">
+                <a href="explore-more.html" class="btn btn-outline-dark explore-button">Explore More</a>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="container-fluid">
+        <div class="image-grid">
+            <div class="image-grid-item" style="background-image: url('grid/Tile-Banner-1800-x1800_18a19bd9-b820-4269-a93a-e960d03b165a.jpg');">
+                <div class="text-box">READY TO WEAR</div>
+                <a href="shop-now.html" class="shop-now-button">Shop Now</a>
+            </div>
+            <div class="image-grid-item" style="background-image: url('grid/Tile-Banner-1800-x1800-Fragrance-Magnificent.jpg');">
+                <div class="text-box">FRAGRANCE</div>
+                <a href="shop-now.html" class="shop-now-button">Shop Now</a>
+            </div>
+            <div class="image-grid-item large" style="background-image: url('grid/Tile-Banner-1800-x1800_cf571d01-c836-47cd-95ed-aa172f80257b_800x.jpg');">
+                <div class="text-box">SALE</div>
+                <a href="shop-now.html" class="shop-now-button">Shop Now</a>
+            </div>
+            <div class="image-grid-item" style="background-image: url('grid/Tile-Banner-1800-x1800-_Mens-A_0c69f6d9-c456-479a-975a-7f9f2dc802e4.jpg');">
+                <div class="text-box">MENS WEAR</div>
+                <a href="shop-now.html" class="shop-now-button">Shop Now</a>
+            </div>
+            <div class="image-grid-item" style="background-image: url('grid/WhatsApp_Image_2024-02-06_at_15.25.14_168534ae.jpg');">
+                <div class="text-box">COSMETICS</div>
+                <a href="shop-now.html" class="shop-now-button">Shop Now</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <!-- Top Picks Heading -->
+            <div class="col-12 text-center mt-5">
+                <h2 class="top-picks-heading">Top Picks</h2>
+            </div>
+        </div>
+    
+        <!-- Button Group -->
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a href="new-arrivals.html" class="btn rounded-pill custom-btn">New Arrivals</a>
+            </div>
+            <div class="col-auto">
+                <a href="unstitched.html" class="btn rounded-pill custom-btn">Unstitched</a>
+            </div>
+            <div class="col-auto">
+                <a href="ready-to-wear.html" class="btn rounded-pill custom-btn">Ready to Wear</a>
+            </div>
+        </div>
+    </div>
+    
+
+ <!-- Dropdown Menu for Mobile Screens -->
+ <div class="dropdown">
+    <select class="dropdown-menu">
+        <option value="new-arrivals.html">New Arrivals</option>
+        <option value="unstitched.html">Unstitched</option>
+        <option value="ready-to-wear.html">Ready to Wear</option>
+    </select>
+</div>
+</div>
+
+
+
+
+
+
+    <div class="container-fluid pb-5">
+        <div class="row product-grid">
+            <div class="col-md-3 product-item">
+                <div class="product-image" id="picone" style="background-image: url('logos/pic1.webp');"></div>
+                <a href="product1.html" class="product-name">HOT-PINK-LAWN-3 PIECE (SAS233P53)</a>
+                <div class="product-price">PKR.7,184</div>
+                <div class="product-sizes">
+                    <span class="size">8</span>
+                    <span class="size">10</span>
+                    <span class="size">12</span>
+                    <span class="size">14</span>
+                    <span class="size">16</span>
+                </div>
+            </div>
+            <div class="col-md-3 product-item">
+                <div class="product-image" id="pictwo" style="background-image: url('logos/pic2.webp');"></div>
+                <a href="product2.html" class="product-name">BLACK-LAWN-3 PIECE (BSAS233P05)</a>
+                <div class="product-price">PKR.6,784</div>
+                <div class="product-sizes">
+                    <span class="size">8</span>
+                    <span class="size">10</span>
+                    <span class="size">12</span>
+                    <span class="size">14</span>
+                    <span class="size">16</span>
+                </div>
+            </div>
+            <div class="col-md-3 product-item">
+                <div class="product-image" id="picthree" style="background-image: url('logos/pic3.webp');"></div>
+                <a href="product3.html" class="product-name">FAWN-CAMBRIC-2 PIECE (SRLS232P07)</a>
+                <div class="product-price">PKR.5,904</div>
+                <div class="product-sizes">
+                    <span class="size">8</span>
+                    <span class="size">10</span>
+                    <span class="size">12</span>
+                    <span class="size">14</span>
+                    <span class="size">16</span>
+                </div>
+            </div>
+            <div class="col-md-3 product-item">
+                <div class="product-image" id="picfour" style="background-image: url('logos/pic4.webp');"></div>
+                <a href="product4.html" class="product-name">BLUE-YARN DYED-1 PIECE (SAS231P12)</a>
+                <div class="product-price">PKR.4,328</div>
+                <div class="product-sizes">
+                    <span class="size">8</span>
+                    <span class="size">10</span>
+                    <span class="size">12</span>
+                    <span class="size">14</span>
+                    <span class="size">16</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="container-fluid pb-2    ">
+        <div class="row g-0 mt-5" style="height: 70vh;">
+            <!-- Left Image Column -->
+            <div class="col-md-6 p-0">
+                <a href="#">
+                    <img src="logos/IMG_5308_1_900x.webp" alt="Beauty Products" class="img-fluid h-100 w-100 object-fit-cover">
+                </a>
+            </div>
+            <!-- Right Text Column -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center custom-bg">
+                <div class="text-center p-4">
+                    <h2 class="mb-3">Beauty & Fragrances</h2>
+                    <p class="mb-4">Create your charm to leave a lasting impression by counting on our captivating and breathtaking fragrances and irresistible beauty products. Explore the world of our fragrances and beauty range available now!</p>
+                    <a href="shop-now.html" class="btn shop-now-btn">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="info-section py-5 mt-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-6 d-flex align-items-center">
+                    <img src="logos/trucks.webp" alt="Truck Icon" class="icon me-2">
+                    <span class="info-text">SHIPPING <br> Flat Rs. 200 shipping charges on all orders</span>
+                </div>
+                <div class="col-md-6 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+                    <img src="logos/tele.jpeg" alt="Telephone Icon" class="icon me-2">
+                    <span class="info-text">ONLINE SUPPORT <br>UAN: +123 456 7890</span>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center text-center">
+                <div class="col-md-8">
+                    <h2 class="mb-3">NEWSLETTER</h2>
+                    <p class="mb-4">Sign up to stay in the loop. Receive updates, access to exclusive deals, and more.</p>
+                    <form class="d-flex justify-content-center">
+                        <input type="email" class="form-control me-2" placeholder="Enter your email" style="max-width: 300px;">
+                        <button type="submit" class="btn subscribe-btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <p class="suggestion">Suggestions for you</p>
+        <!-- Add your product suggestions here -->
+    </div>
+
+
+
+    
+    <div class="container-fluid pb-5">
+        <div class="row product-grid">
+            <div class="col-md-3 product-item">
+                <div class="product-image" id="picone" style="background-image: url('logos/pic1.webp');"></div>
+                <a href="product1.html" class="product-name">HOT-PINK-LAWN-3 PIECE (SAS233P53)</a>
+                <div class="product-price">PKR.7,184</div>
+                <div class="product-sizes">
+                    <span class="size">8</span>
+                    <span class="size">10</span>
+                    <span class="size">12</span>
+                    <span class="size">14</span>
+                    <span class="size">16</span>
+                </div>
+            </div>
+            <div class="col-md-3 product-item">
+                <div class="product-image" id="pictwo" style="background-image: url('logos/pic2.webp');"></div>
+                <a href="product2.html" class="product-name">BLACK-LAWN-3 PIECE (BSAS233P05)</a>
+                <div class="product-price">PKR.6,784</div>
+                <div class="product-sizes">
+                    <span class="size">8</span>
+                    <span class="size">10</span>
+                    <span class="size">12</span>
+                    <span class="size">14</span>
+                    <span class="size">16</span>
+                </div>
+            </div>
+            <div class="col-md-3 product-item">
+                <div class="product-image" id="picthree" style="background-image: url('logos/pic3.webp');"></div>
+                <a href="product3.html" class="product-name">FAWN-CAMBRIC-2 PIECE (SRLS232P07)</a>
+                <div class="product-price">PKR.5,904</div>
+                <div class="product-sizes">
+                    <span class="size">8</span>
+                    <span class="size">10</span>
+                    <span class="size">12</span>
+                    <span class="size">14</span>
+                    <span class="size">16</span>
+                </div>
+            </div>
+            <div class="col-md-3 product-item">
+                <div class="product-image" id="picfour" style="background-image: url('logos/pic4.webp');"></div>
+                <a href="product4.html" class="product-name">BLUE-YARN DYED-1 PIECE (SAS231P12)</a>
+                <div class="product-price">PKR.4,328</div>
+                <div class="product-sizes">
+                    <span class="size">8</span>
+                    <span class="size">10</span>
+                    <span class="size">12</span>
+                    <span class="size">14</span>
+                    <span class="size">16</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+    <div class="container-fluid pb-5">
+        <div class="row product-grid">
+            <div class="col-md-3 product-item">
+                <div class="product-image" id="picone" style="background-image: url('logos/pic1.webp');"></div>
+                <a href="product1.html" class="product-name">HOT-PINK-LAWN-3 PIECE (SAS233P53)</a>
+                <div class="product-price">PKR.7,184</div>
+                <div class="product-sizes">
+                    <span class="size">8</span>
+                    <span class="size">10</span>
+                    <span class="size">12</span>
+                    <span class="size">14</span>
+                    <span class="size">16</span>
+                </div>
+            </div>
+            <div class="col-md-3 product-item">
+                <div class="product-image" id="pictwo" style="background-image: url('logos/pic2.webp');"></div>
+                <a href="product2.html" class="product-name">BLACK-LAWN-3 PIECE (BSAS233P05)</a>
+                <div class="product-price">PKR.6,784</div>
+                <div class="product-sizes">
+                    <span class="size">8</span>
+                    <span class="size">10</span>
+                    <span class="size">12</span>
+                    <span class="size">14</span>
+                    <span class="size">16</span>
+                </div>
+            </div>
+            <div class="col-md-3 product-item">
+                <div class="product-image" id="picthree" style="background-image: url('logos/pic3.webp');"></div>
+                <a href="product3.html" class="product-name">FAWN-CAMBRIC-2 PIECE (SRLS232P07)</a>
+                <div class="product-price">PKR.5,904</div>
+                <div class="product-sizes">
+                    <span class="size">8</span>
+                    <span class="size">10</span>
+                    <span class="size">12</span>
+                    <span class="size">14</span>
+                    <span class="size">16</span>
+                </div>
+            </div>
+            <div class="col-md-3 product-item">
+                <div class="product-image" id="picfour" style="background-image: url('logos/pic4.webp');"></div>
+                <a href="product4.html" class="product-name">BLUE-YARN DYED-1 PIECE (SAS231P12)</a>
+                <div class="product-price">PKR.4,328</div>
+                <div class="product-sizes">
+                    <span class="size">8</span>
+                    <span class="size">10</span>
+                    <span class="size">12</span>
+                    <span class="size">14</span>
+                    <span class="size">16</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    
+<footer class="footer py-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <h5>Contact Us</h5>
+                <p class="mb-1">Phone: +92 3342612626</p>
+                <p class="mb-1">Email: bonanzasatrangishop@gmail.com</p>
+                <p class="mb-3">Customer Care:<br> Monday to Saturday: 9 am to 9 pm</p>
+                <div>
+                    <div class="d-flex align-items-center mb-2">
+                        <a href="#" class="social-icon me-2" style="background-image: url('grid/facebook-app-symbol.webp');"></a>
+                        <span>Facebook</span>
+                    </div>
+                    <div class="d-flex align-items-center mb-2">
+                        <a href="#" class="social-icon me-2" style="background-image: url('grid/instagram.webp');"></a>
+                        <span>Instagram</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <a href="#" class="social-icon me-2" style="background-image: url('grid/youtube.webp');"></a>
+                        <span>YouTube</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h5>INFORMATION</h5>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Track Your Order</a></li>
+                    <li><a href="#">Shipping Information</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h5>Customer Care</h5>
+                <ul class="mb-4">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Return and Exchange Policy</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+                <h5>Payment Options</h5>
+                <div>
+                    <img src="logos/visa2.png" alt="Visa" class="me-2" style="width: 40px;">
+                    <img src="logos/master2.png" alt="MasterCard" class="me-2" style="width: 40px;">
+                    <img src="logos/easy1.jpeg" alt="Amex" class="me-2" style="width: 40px;">
+                    <img src="logos/jazz3.jpeg" alt="PayPal" style="width: 40px;">
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h5>Verified By</h5>
+                <img src="grid/pci.webp" alt="Verified Logo" style="max-width: 100px;">
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom mt-4">
+        <div class="container">
+            <p class="mb-0">© 2024, Bonanza | All Rights Reserved | Developed by Shopistan| Powered by XStak</p>
+            <p class="mb-0">Designed by AdornThemes</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
