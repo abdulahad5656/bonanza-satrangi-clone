@@ -3,9 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Abdulahad - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Clearfix utility class */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .cv-container {
+            width: 800px;
+            min-height: 1000px;
+            background: white;
+            display: flex;
+            position: relative;
+        }
+
+        .header-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 180px;
+            background: #FFE4B5;
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            display: flex;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .left-section {
+            float: left;
+            width: 300px;
+            background: #8B3E2F;
+            padding: 30px;
+            color: white;
+            position: relative;
+        }
+
+        .right-section {
+            float: left;
+            width: calc(100% - 300px);
+            padding: 30px;
+            position: relative;
+            background: transparent;
+        }
+
+        .profile-img-container {
+            position: relative;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid white;
+            float: left;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .profile-details {
+    display: none;
+    position: absolute; /* Changed from fixed to absolute */
+    background: rgba(139, 62, 47, 0.9);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    z-index: 1000;
+    left: 220px; /* Added to position it to the right of image */
+    top: 50%; /* Center vertically relative to the image */
+    transform: translateY(-50%); /* Ensure perfect vertical centering */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: white;
+            clear: both;
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+            clear: both;
+        }
+
+        .contact-info div {
+            margin-bottom: 10px;
+            float: left;
+            width: 100%;
+        }
+
+        .hobbies-section {
+            clear: both;
+        }
+
+        .hobbies {
+            list-style: none;
+            clear: both;
+        }
+
+        .hobbies li {
+            margin-bottom: 10px;
+            float: left;
+            width: 100%;
+        }
+
+        .hobbies li:before {
+            content: "→";
+            margin-right: 10px;
+            float: left;
+        }
+
+        .name {
+            font-size: 32px;
+            margin-bottom: 5px;
+            color: #333;
+            margin-top: 30px;
+            clear: both;
+        }
+
+        .title {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 60px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #8B3E2F;
+            clear: both;
+        }
+
+        .section-heading:before {
+            content: "▶";
+            margin-right: 10px;
+            color: #4a9;
+        }
+
+        .education {
+            clear: both;
+            margin-bottom: 30px;
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+            float: left;
+            width: 100%;
+        }
+
+        .education-item h3 {
+            color: #333;
+        }
+
+        .education-item p {
+            color: #666;
+            font-style: italic;
+        }
+
+        .language {
+            clear: both;
+            margin-bottom: 30px;
+        }
+
+        .skills {
+            clear: both;
+        }
+
+        .skills-list {
+            list-style: none;
+            clear: both;
+        }
+
+        .skills-list li {
+            margin-bottom: 8px;
+            color: #333;
+            float: left;
+            width: 100%;
+        }
+
+        .right-section .skills-list li {
+            color: #8B3E2F;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="cv-container clearfix">
+        <div class="header-section"></div>
+        <div class="content-wrapper clearfix">
+            <div class="left-section clearfix">
+                <div class="profile-img-container clearfix">
+                    <div class="profile-img">
+                        <img src="picture/WhatsApp Image 2024-10-22 at 15.03.42_be258256.jpg" alt="Profile Picture" id="profileImage">
+                    </div>
+                    <div class="profile-details" id="profileDetails">
+                        Software Engineering student.<br>
+                        I consider my self a responsible and orderly person.
+                    </div>
+                </div>
+
+                <div class="profile-content clearfix">
+                    <h2 class="section-title">PROFILE</h2>
+                    <p>Software Engineering student.</p>
+                    <p>I consider my self a responsible and orderly person.</p>
+                </div>
+
+                <div class="contact-info clearfix">
+                    <h2 class="section-title">CONTACT ME</h2>
+                    <div>📞 +92 315 6913255</div>
+                    <div>✉️ ahad26425@gmail.com</div>
+                    <div>📍 Bahria Town, Lahore</div>
+                </div>
+
+                <div class="hobbies-section clearfix">
+                    <h2 class="section-title">HOBBIES</h2>
+                    <ul class="hobbies">
+                        <li>CRICKET</li>
+                        <li>TRAVELLING</li>
+                        <li>GARDENING</li>
+                        <li>BOOK READING</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="right-section clearfix">
+                <h1 class="name">ABDULAHAD</h1>
+                <div class="title">Developer</div>
+
+                <div class="education clearfix">
+                    <div class="education-item">
+                        <h2 class="section-heading">EDUCATION</h2>
+                        <h3>COMSATS UNIVERSITY</h3>
+                        <p>BS Software Engineering, in progress.</p>
+                    </div>
+                    <div class="education-item">
+                        <h3>SUPERIOR COLLEGE</h3>
+                        <p>2020-2022</p>
+                    </div>
+                </div>
+
+                <div class="language clearfix">
+                    <h2 class="section-heading">LANGUAGE</h2>
+                    <ul class="skills-list">
+                        <li>Native Urdu</li>
+                        <li>Advanced English</li>
+                    </ul>
+                </div>
+
+                <div class="skills clearfix">
+                    <h2 class="section-heading">SKILLS</h2>
+                    <ul class="skills-list">
+                        <li>Html</li>
+                        <li>CSS</li>
+                        <li>Bootstrap</li>
+                        <li>JavaScript</li>
+                        <li>C/C++</li>
+                        <li>Java</li>
+                        <li>Python</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const profileImage = document.getElementById('profileImage');
+        const profileDetails = document.getElementById('profileDetails');
+
+        profileImage.addEventListener('mouseover', function() {
+            profileDetails.style.display = 'block';
+        });
+
+        profileImage.addEventListener('mouseout', function() {
+            profileDetails.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
