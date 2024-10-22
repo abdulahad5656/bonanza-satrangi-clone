@@ -1,0 +1,213 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.cv-container {
+    width: 800px;
+    min-height: 1000px;
+    background: white;
+    display: flex;
+    position: relative;
+}
+
+.header-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background: #FFE4B5;
+    z-index: 1;
+}
+
+.content-wrapper {
+    display: flex;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.left-section {
+    float: left;
+    width: 300px;
+    background: #8B3E2F;
+    padding: 30px;
+    color: white;
+    position: relative;
+}
+
+.right-section {
+    float: left;
+    width: calc(100% - 300px);
+    padding: 30px;
+    position: relative;
+    background: transparent;
+}
+
+.profile-img-container {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    border: 5px solid white;
+    float: left;
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.profile-details {
+display: none;
+position: absolute; /* Changed from fixed to absolute */
+background: rgba(139, 62, 47, 0.9);
+color: white;
+padding: 20px;
+border-radius: 8px;
+width: 300px;
+z-index: 1000;
+left: 220px; /* Added to position it to the right of image */
+top: 50%; /* Center vertically relative to the image */
+transform: translateY(-50%); /* Ensure perfect vertical centering */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.section-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: white;
+    clear: both;
+}
+
+.contact-info {
+    margin-bottom: 30px;
+    clear: both;
+}
+
+.contact-info div {
+    margin-bottom: 10px;
+    float: left;
+    width: 100%;
+}
+
+.hobbies-section {
+    clear: both;
+}
+
+.hobbies {
+    list-style: none;
+    clear: both;
+}
+
+.hobbies li {
+    margin-bottom: 10px;
+    float: left;
+    width: 100%;
+}
+
+.hobbies li:before {
+    content: "→";
+    margin-right: 10px;
+    float: left;
+}
+
+.name {
+    font-size: 32px;
+    margin-bottom: 5px;
+    color: #333;
+    margin-top: 30px;
+    clear: both;
+}
+
+.title {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 60px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #8B3E2F;
+    clear: both;
+}
+
+.section-heading:before {
+    content: "▶";
+    margin-right: 10px;
+    color: #4a9;
+}
+
+.education {
+    clear: both;
+    margin-bottom: 30px;
+}
+
+.education-item {
+    margin-bottom: 20px;
+    float: left;
+    width: 100%;
+}
+
+.education-item h3 {
+    color: #333;
+}
+
+.education-item p {
+    color: #666;
+    font-style: italic;
+}
+
+.language {
+    clear: both;
+    margin-bottom: 30px;
+}
+
+.skills {
+    clear: both;
+}
+
+.skills-list {
+    list-style: none;
+    clear: both;
+}
+
+.skills-list li {
+    margin-bottom: 8px;
+    color: #333;
+    float: left;
+    width: 100%;
+}
+
+.right-section .skills-list li {
+    color: #8B3E2F;
+}
