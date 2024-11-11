@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdulahad - CV</title>
+    <link rel="stylesheet" href="css/cv.css">
+    
+</head>
+<body>
+    <div class="cv-container clearfix">
+        <div class="header-section"></div>
+        <div class="content-wrapper clearfix">
+            <div class="left-section clearfix">
+                <div class="profile-img-container clearfix">
+                    <div class="profile-img">
+                        <img src="picture/WhatsApp Image 2024-10-22 at 15.03.42_be258256.jpg" alt="Profile Picture" id="profileImage">
+                    </div>
+                    <div class="profile-details" id="profileDetails">
+                        Software Engineering student.<br>
+                        I consider my self a responsible and orderly person.
+                    </div>
+                </div>
+
+                <div class="profile-content clearfix">
+                    <h2 class="section-title">PROFILE</h2>
+                    <p>Software Engineering student.</p>
+                    <p>I consider my self a responsible and orderly person.</p>
+                </div>
+
+                <div class="contact-info clearfix">
+                    <h2 class="section-title">CONTACT ME</h2>
+                    <div>📞 +92 315 6913255</div>
+                    <div>✉️ ahad26425@gmail.com</div>
+                    <div>📍 Bahria Town, Lahore</div>
+                </div>
+
+                <div class="hobbies-section clearfix">
+                    <h2 class="section-title">HOBBIES</h2>
+                    <ul class="hobbies">
+                        <li>CRICKET</li>
+                        <li>TRAVELLING</li>
+                        <li>GARDENING</li>
+                        <li>BOOK READING</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="right-section clearfix">
+                <h1 class="name">ABDULAHAD</h1>
+                <div class="title">Developer</div>
+
+                <div class="education clearfix">
+                    <div class="education-item">
+                        <h2 class="section-heading">EDUCATION</h2>
+                        <h3>COMSATS UNIVERSITY</h3>
+                        <p>BS Software Engineering, in progress.</p>
+                    </div>
+                    <div class="education-item">
+                        <h3>SUPERIOR COLLEGE</h3>
+                        <p>2020-2022</p>
+                    </div>
+                </div>
+
+                <div class="language clearfix">
+                    <h2 class="section-heading">LANGUAGE</h2>
+                    <ul class="skills-list">
+                        <li>Native Urdu</li>
+                        <li>Advanced English</li>
+                    </ul>
+                </div>
+
+                <div class="skills clearfix">
+                    <h2 class="section-heading">SKILLS</h2>
+                    <ul class="skills-list">
+                        <li>Html</li>
+                        <li>CSS</li>
+                        <li>Bootstrap</li>
+                        <li>JavaScript</li>
+                        <li>C/C++</li>
+                        <li>Java</li>
+                        <li>Python</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const profileImage = document.getElementById('profileImage');
+        const profileDetails = document.getElementById('profileDetails');
+
+        profileImage.addEventListener('mouseover', function() {
+            profileDetails.style.display = 'block';
+        });
+
+        profileImage.addEventListener('mouseout', function() {
+            profileDetails.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
