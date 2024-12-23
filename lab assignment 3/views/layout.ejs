@@ -1,0 +1,122 @@
+<!-- views/layout.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <header>
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="shipping-info">Flat Rs. 200 shipping charges on all orders</div>
+            <div class="return-policy">No Return or Exchange on sale items</div>
+        </div>
+    
+        
+    
+    
+        <div class="middle-bar">
+            <div class="logo">
+               <a href="#"><img src="logos/Bonanza_Logo_500x_2x_a4ee20ed-344e-48db-85ed-bdc87c7b08cb (1).avif"   alt="Logo">
+               </a> 
+            </div>
+            <div class="icons">
+                <a href="#"><img src="logos/truck.webp" alt="Delivery"></a>
+                <a href="#"><img src="logos/search.jpeg" alt="search"></a>
+                <a href="#"><img src="logos/account.webp" alt="Cart"></a>
+                <a href="#"><img src="logos/heart_1.webp" alt="Profile"></a>
+                <a href="#"><img src="logos/shopping-bag.webp" alt="Favourites"></a>
+            </div>
+        </div>
+        
+    
+        <!-- Bottom Bar -->
+        <nav class="bottom-bar">
+            <ul>
+                <li><a href="admin/dashboard">Admin Dashboard</a>
+                </li>
+                <li><a href="#">SUMMER COLLECTION</a></li>
+                <li><a href="#">NEW ARRIVAL</a></li>
+                <li><a href="#">READY TO WEAR</a></li>
+                <li><a href="#">UNSTITCHED</a></li>
+                <li><a href="#">LUXURY UNSTITCHED</a></li>
+                <li><a href="#">COSMETICS</a></li>
+                <li><a href="#">FRAGRANCES</a></li>
+                <li><a href="#">MEN</a></li>
+                <li><a href="#">SALE</a></li>
+            </ul>
+        </nav>
+        </header>
+    <!-- This is where the content of the page will be injected -->
+    <main>
+        <%- body %>
+    </main>
+
+    
+<!-- Footer Section -->
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-compartment">
+        <h4>Contact Us</h4>
+        <p>Phone: +92 3342612626</p>
+        <p>Email: bonanzasatrangishop@gmail.com</p>
+        <p>Customer Care:<br> Monday to Saturday: 9 am to 9 pm</p>
+        <div class="social-media">
+            <div class="social-item">
+                <a href="https://facebook.com" target="_blank" class="social-icon facebook" aria-label="Facebook"></a>
+                <p>Facebook</p>
+            </div>
+            <div class="social-item">
+                <a href="https://instagram.com" target="_blank" class="social-icon instagram" aria-label="Instagram"></a>
+                <p>Instagram</p>
+            </div>
+            <div class="social-item">
+                <a href="https://youtube.com" target="_blank" class="social-icon youtube" aria-label="YouTube"></a>
+                <p>YouTube</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-compartment">
+        <h4>INFORMATION</h4>
+        <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Track Your Order</a></li>
+            <li><a href="#">Shipping Information</a></li>
+            <li><a href="#">Store Locator</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Refund Policy</a></li>
+        </ul>
+    </div>
+
+    <div class="footer-compartment">
+        <h4>Customer Care</h4>
+        <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Return and Exchange Policy</a></li>
+            <li><a href="#">FAQs</a></li>
+        </ul>
+        <h4>Payment Options</h4>
+        <div class="payment-icons">
+            <img src="logos/visa2.png" alt="Visa">
+            <img src="logos/master2.png" alt="MasterCard">
+            <img src="logos/easy1.jpeg" alt="Amex">
+            <img src="logos/jazz3.jpeg" alt="PayPal">
+        </div>
+    </div>
+
+    <div class="footer-compartment">
+        <h4>Verified By</h4>
+        <img src="grid/pci.webp" alt="Verified Logo">
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024, Bonanza | All Rights Reserved | Developed by Shopistan| Powered by XStak</p>
+        <p>Designed by AdornThemes</p>
+    </div>
+</footer>
+</body>
+</html>

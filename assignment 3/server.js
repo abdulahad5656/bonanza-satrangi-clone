@@ -1,47 +1,36 @@
 const express = require("express");
-let app  = express();
+const app = express();
+const expressLayouts = require("express-ejs-layouts");
 
-app.set("view engine","ejs");
+
+// Middleware to parse body data for form submission
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use(expressLayouts);
 
 
-app.get("/CV",(req,res)=>{
-    res.render("CV");
-})
+// Set static folder for serving static files (like CSS, images, etc.)
 
-app.get("/",(req,res)=>{
-    res.render("home");
-})
 
-app.listen(5000,() => {
-    console.log("Server started at location: 5000")
-})
+// Set view engine to EJS
+app.set("view engine", "ejs");
 
 
 
 
+// Route for the landing page
+app.get("/", (req, res) => {
+    res.render("pages/main-site-pages/home", {title: "Home Page" });
+});
 
+app.get("/cv", (req, res) => {
+    res.render("pages/main-site-pages/cv", { title: "cv Page" });
+});
 
-// const express = require("express");
-// let app  = express();
+// Additional example routes can be added here...
 
-
-
-// app.get("/contact-us",(req,res)=>{
-//     res.send("<h1> Hello Section B Contact</h1>")
-// })
-
-// app.get("/",(req,res)=>{
-//     res.send("<h1> Hello Section A Home</h1>")
-// })
-
-// app.get("/update",(req,res)=>{
-//     res.send("<h1> Hello Section update</h1>")
-// })
-// app.get("/create",(req,res)=>{
-//     res.send("<h1> Hello create</h1>")
-// })
-
-// app.listen(5001,() => {
-//     console.log("Server started at location: 5001")
-// })
+// Start the server
+const PORT = 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});

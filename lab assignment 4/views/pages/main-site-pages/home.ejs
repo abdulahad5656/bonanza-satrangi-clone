@@ -1,0 +1,226 @@
+<main>
+    <!-- Banner Section -->
+    <div class="image-link">
+        <a href="#">
+            <img src="grid/Tile-Banner-1800-x1800_cf571d01-c836-47cd-95ed-aa172f80257b_800x.jpg" alt="Sale Banner">
+        </a>
+    </div>
+
+    <!-- Video Section -->
+    <div class="video-container">
+        <video width="100%" controls autoplay>
+            <source src="/videos/mainpagevideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Button Section -->
+    <div class="button-section">
+        <a href="/explore-more" class="explore-button">Explore More</a>
+    </div>
+
+    
+
+
+
+<!-- Image Grid Section -->
+<div class="image-grid">
+  <div class="image-grid-item small" style="background-image: url('grid/Tile-Banner-1800-x1800_18a19bd9-b820-4269-a93a-e960d03b165a.jpg');">
+      <div class="text-box">READY TO WEAR</div>
+      <a href="shop-now.html" class="shop-now-button">Shop Now</a>
+  </div>
+  <div class="image-grid-item small" style="background-image: url('grid/Tile-Banner-1800-x1800-Fragrance-Magnificent.jpg');">
+      <div class="text-box">FRAGRANCE</div>
+      <a href="shop-now.html" class="shop-now-button">Shop Now</a>
+  </div>
+  <div class="image-grid-item large" style="background-image: url('grid/Tile-Banner-1800-x1800_cf571d01-c836-47cd-95ed-aa172f80257b_800x.jpg');">
+      <div class="text-box">SALE</div>
+      <a href="shop-now.html" class="shop-now-button">Shop Now</a>
+  </div>
+  <div class="image-grid-item small" style="background-image: url('grid/Tile-Banner-1800-x1800-_Mens-A_0c69f6d9-c456-479a-975a-7f9f2dc802e4.jpg');">
+      <div class="text-box">MENS WEAR</div>
+      <a href="shop-now.html" class="shop-now-button">Shop Now</a>
+  </div>
+  <div class="image-grid-item small" style="background-image: url('grid/WhatsApp_Image_2024-02-06_at_15.25.14_168534ae.jpg');">
+      <div class="text-box">COSMETICS</div>
+      <a href="shop-now.html" class="shop-now-button">Shop Now</a>
+  </div>
+</div>
+
+
+
+<!-- New Section for "Top Picks" -->
+<div class="top-picks-section">
+  <h2 class="top-picks-heading">Top Picks</h2>
+  <div class="button-group">
+      <a href="new-arrivals.html" class="rounded-button">New Arrivals</a>
+      <a href="unstitched.html" class="rounded-button">Unstitched</a>
+      <a href="ready-to-wear.html" class="rounded-button">Ready to Wear</a>
+  </div>
+</div>
+
+<!-- Dropdown Menu for Mobile Screens -->
+<div class="dropdown">
+  <select class="dropdown-menu">
+      <option value="new-arrivals.html">New Arrivals</option>
+      <option value="unstitched.html">Unstitched</option>
+      <option value="ready-to-wear.html">Ready to Wear</option>
+  </select>
+</div>
+</div>
+
+    <!--product grid-->
+    <div class="product-grid">
+        <div class="product-slider">
+          <% product.forEach(Product => { %>
+            <div class="product-item">
+              <a href="/product/<%= Product._id %>">
+                <div class="product-image">
+                  <img src="<%= Product.picture %>" alt="<%= product.name %>">
+
+                  </div>
+                <div class="product-info">
+                  <h4 class="product-name"><%= Product.name %></h4>
+                  <p class="product-price"><%= Product.price %></p>
+                  <a href="/add-to-cart/<%= Product._id %>" class="btn btn-primary add-to-cart" data-product-id="<%= Product._id %>">
+                    Add To Cart
+                  </a>
+                </div>
+              </a>
+            </div>
+          <% }) %>
+        </div>
+      
+        <!-- Navigation buttons for slider -->
+        <button class="slider-prev">◁</button>
+        <button class="slider-next">▷</button>
+      </div>
+      
+
+      
+<div class="half-container">
+  <!-- Left Image Div -->
+  <div class="half left">
+      <a href="#">
+          <img src="logos/IMG_5308_1_900x.webp" alt="Product Image" class="full-image">
+      </a>
+  </div>
+
+  <!-- Right Text Div -->
+  <div class="half right">
+      <div class="text-content">
+          <h2>Beauty & Fragrances</h2>
+          <p>Create your charm to leave a lasting impression by counting on our captivating and breathtaking fragrances and irresistible beauty products. Explore the world of our fragrances and beauty range available now!</p>
+          <a href="shop-now.html" class="shop-now-btn">Shop Now</a>
+      </div>
+  </div>
+</div>
+
+<div class="info-section">
+  <!-- Top left corner: Truck icon and text -->
+  <div class="left-section">
+      <img src="logos/trucks.webp" alt="Truck Icon" class="icon">
+      <span class="info-text">SHIPPING <br>
+
+          Flat Rs. 200 shipping charges on all orders</span>
+  </div>
+
+  <!-- Top right corner: Telephone icon and text -->
+  <div class="right-section">
+      <img src="logos/tele.jpeg" alt="Telephone Icon" class="icon">
+      <span  class="info-text">ONLINE SUPPORT <br>UAN: +123 456 7890 </span>
+      
+      
+  </div>
+
+  <!-- Centered bottom section with heading, paragraph, and email input -->
+  <div class="center-section">
+      <h2>NEWSLETTER</h2>
+      <p>Sign up to stay in the loop. Receive updates, access to exclusive deals, and more.</p>
+      <div class="subscribe-form">
+          <input type="email" placeholder="Enter your email" class="email-input">
+          <button class="subscribe-btn">Subscribe</button>
+      </div>
+  </div>
+</div>
+
+<div class="suggestion">
+  <p>Suggestions for you</p>
+</div>
+
+
+ <!--product grid-->
+ <div class="product-grid">
+  <div class="product-slider">
+    <% product.forEach(Product => { %>
+      <div class="product-item">
+        <a href="/product/<%= Product._id %>">
+          <div class="product-image">
+            <img src="<%= Product.picture %>" alt="<%= product.name %>">
+
+            </div>
+          <div class="product-info">
+            <h4 class="product-name"><%= Product.name %></h4>
+            <p class="product-price"><%= Product.price %></p>
+          </div>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+
+  <!-- Navigation buttons for slider -->
+  <button class="slider-prev">◁</button>
+  <button class="slider-next">▷</button>
+</div>
+
+
+
+
+<script>
+  let currentPosition = 0;
+const itemsToShow = 4; // Number of items to display at a time
+const totalItems = document.querySelectorAll('.product-item').length;
+const slider = document.querySelector('.product-slider');
+const itemWidth = document.querySelector('.product-item').offsetWidth + 20; // width + gap
+
+document.querySelector('.slider-next').addEventListener('click', function() {
+    if (currentPosition + itemsToShow < totalItems) {
+        currentPosition += itemsToShow;
+        slider.style.transform = `translateX(-${currentPosition * itemWidth}px)`;
+    }
+});
+
+document.querySelector('.slider-prev').addEventListener('click', function() {
+    if (currentPosition - itemsToShow >= 0) {
+        currentPosition -= itemsToShow;
+        slider.style.transform = `translateX(-${currentPosition * itemWidth}px)`;
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Add to cart functionality
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', async function(e) {
+            e.preventDefault();
+            const productId = this.dataset.productId;
+            
+            try {
+                const response = await fetch(`/add-to-cart/${productId}`);
+                if (response.ok) {
+                    alert('Product added to cart successfully!');
+                    // Optionally refresh the page or update cart count
+                    window.location.reload();
+                } else {
+                    const error = await response.text();
+                    throw new Error(error || 'Failed to add product to cart');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert(error.message || 'Failed to add product to cart');
+            }
+        });
+    });
+});
+
+</script>
+
