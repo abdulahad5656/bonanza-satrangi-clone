@@ -1,0 +1,39 @@
+<!-- views/pages/admin/categories.ejs -->
+
+<h1>Category Management</h1>
+<a href="/categories/create" class="btn">Create Category</a>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% categories.forEach(category => { %>
+      <tr>
+        <td><%= category.name %></td>
+        <td>
+          <a href="/categories/edit/<%= category._id %>">Edit</a> |
+          <a href="/categories/delete/<%= category._id %>">Delete</a>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<!-- Pagination Controls -->
+<div class="pagination">
+  <% if (currentPage > 1) { %>
+      <a href="?page=<%= currentPage - 1 %>">Previous</a>
+  <% } %>
+
+  <% for (let i = 1; i <= totalPages; i++) { %>
+      <a href="?page=<%= i %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
+  <% } %>
+
+  <% if (currentPage < totalPages) { %>
+      <a href="?page=<%= currentPage + 1 %>">Next</a>
+  <% } %>
+</div>

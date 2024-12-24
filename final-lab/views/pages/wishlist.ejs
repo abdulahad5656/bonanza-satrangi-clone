@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/css/wishlist.css">
+
+<div class="wishlist-container">
+    <div class="wishlist-header">
+        <h1>My Wishlist</h1>
+    </div>
+    
+    <% if (!wishlist || wishlist.length === 0) { %>
+        <div class="empty-wishlist">
+            <p>Your wishlist is empty</p>
+            <a href="/" class="btn btn-primary">Continue Shopping</a>
+        </div>
+    <% } else { %>
+        <div class="wishlist-grid">
+            <% wishlist.forEach(product => { %>
+                <div class="wishlist-item">
+                    <img src="/<%= product.picture %>" alt="<%= product.name %>">
+                    <div class="wishlist-item-info">
+                        <h3 class="wishlist-item-name"><%= product.name %></h3>
+                        <p class="wishlist-item-price">$<%= product.price %></p>
+                        <div class="wishlist-buttons">
+                            <button class="add-to-cart-btn" data-product-id="<%= product._id %>">
+                                Add to Cart
+                            </button>
+                            <button class="remove-btn" data-product-id="<%= product._id %>">
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    <% } %>
+</div>
+
+<script>
+document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+    button.addEventListener('click', async (e) => {
+        const productId = e.target.dataset.productId;
+        try {
+            const response = await fetch(`/add-to-cart/${productId}`);
+            if (response.ok) {
+                alert('Added to cart successfully!');
+            }
+        } catch (error) {
+            alert('Error adding to cart');
+        }
+    });
+});
+
+document.querySelectorAll('.remove-btn').forEach(button => {
+    button.addEventListener('click', async (e) => {
+        const productId = e.target.dataset.productId;
+        try {
+            const response = await fetch(`/wishlist/remove/${productId}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                e.target.closest('.wishlist-item').remove();
+                if (document.querySelectorAll('.wishlist-item').length === 0) {
+                    location.reload();
+                }
+            }
+        } catch (error) {
+            alert('Error removing item from wishlist');
+        }
+    });
+});
+</script> 
