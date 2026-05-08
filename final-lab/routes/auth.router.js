@@ -1,6 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../model/User');
+const mongoose = require('mongoose');
+
+function ensureDbConnected(res, view, layout) {
+    if (mongoose.connection.readyState === 1) return true;
+    res.status(503).render(view, {
+        error: 'Database is not configured. Set MONGODB_URI to enable login/register.',
+        layout
+    });
+    return false;
+}
 
 // Middleware to check if user is authenticated
 const isAuthenticated = (req, res, next) => {
@@ -24,6 +34,7 @@ router.get('/register', (req, res) => {
 // Login POST
 router.post('/login', async (req, res) => {
     try {
+        if (!ensureDbConnected(res, 'pages/auth/login', 'layout.ejs')) return;
         const { email, password } = req.body;
         const user = await User.findOne({ email });
 
@@ -60,6 +71,7 @@ router.post('/login', async (req, res) => {
 // Register POST
 router.post('/register', async (req, res) => {
     try {
+        if (!ensureDbConnected(res, 'pages/auth/register', 'layout.ejs')) return;
         const { name, email, password } = req.body;
         
         // Check if user already exists

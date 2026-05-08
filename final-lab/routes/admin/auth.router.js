@@ -5,6 +5,15 @@ const Products = require('../../model/product');
 const Order = require('../../model/Order');
 const mongoose = require('mongoose');
 
+function ensureDbConnected(res, view, layout) {
+    if (mongoose.connection.readyState === 1) return true;
+    res.status(503).render(view, {
+        error: 'Database is not configured. Set MONGODB_URI to enable admin login/register.',
+        layout
+    });
+    return false;
+}
+
 // Middleware to check if admin is authenticated
 const isAuthenticated = (req, res, next) => {
     if (req.session.adminId) {
@@ -293,6 +302,7 @@ router.get('/admin/register', (req, res) => {
 // Handle login
 router.post('/admin/login', async (req, res) => {
     try {
+        if (!ensureDbConnected(res, 'pages/admin/login', false)) return;
         const { username, password } = req.body;
         const admin = await Admin.findOne({ username });
         
@@ -324,6 +334,7 @@ router.post('/admin/login', async (req, res) => {
 // Handle register
 router.post('/admin/register', async (req, res) => {
     try {
+        if (!ensureDbConnected(res, 'pages/admin/register', false)) return;
         console.log('Registration attempt:', req.body);
         
         const { username, password } = req.body;
