@@ -6,7 +6,8 @@ const Order = require('../../model/Order');
 
 let Product = require("../../model/product");
 
-const Category = require('../../model/Category'); // New schema
+// NOTE: Vercel runs on Linux (case-sensitive FS). The file is `model/category.js`.
+const Category = require('../../model/category'); // New schema
 
 const storage = multer.diskStorage({
   destination: function(req , file , cb){
