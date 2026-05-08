@@ -15,6 +15,9 @@ const app = express();
 
 app.set("trust proxy", 1);
 
+// Fail fast instead of hanging forever when DB isn't connected.
+mongoose.set("bufferCommands", false);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -78,11 +81,15 @@ if (mongoUri) {
 app.use((err, req, res, next) => {
   // eslint-disable-next-line no-console
   console.error(err.stack);
-  res.status(500).render("error", {
-    message: "Something broke!",
-    error: process.env.NODE_ENV === "development" ? err : {},
-    layout: "layout.ejs",
-  });
+  try {
+    res.status(500).render("error", {
+      message: "Something broke!",
+      error: process.env.NODE_ENV === "development" ? err : {},
+      layout: "layout.ejs",
+    });
+  } catch (renderErr) {
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 module.exports = app;

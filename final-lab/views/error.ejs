@@ -1,0 +1,18 @@
+<div style="max-width: 900px; margin: 48px auto; padding: 0 16px; font-family: Arial, sans-serif;">
+  <h1 style="margin: 0 0 12px;">Internal Error</h1>
+  <p style="margin: 0 0 16px;">
+    <%= message || 'Something went wrong.' %>
+  </p>
+
+  <% if (error && error.message) { %>
+    <details style="background: #f5f5f5; padding: 12px; border-radius: 8px;">
+      <summary style="cursor: pointer;">Details</summary>
+      <pre style="white-space: pre-wrap; margin: 12px 0 0;"><%= error.stack || error.message %></pre>
+    </details>
+  <% } %>
+
+  <p style="margin: 16px 0 0;">
+    Try again, or go back to the <a href="/">home page</a>.
+  </p>
+</div>
+

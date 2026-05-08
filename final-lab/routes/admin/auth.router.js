@@ -16,6 +16,14 @@ const isAuthenticated = (req, res, next) => {
 // Home route (main website)
 router.get('/', async (req, res) => {
     try {
+        // If DB isn't configured/connected (common on Vercel preview), render a safe empty home.
+        if (mongoose.connection.readyState !== 1) {
+            return res.render('pages/main-site-pages/home', {
+                product: [],
+                layout: 'layout.ejs',
+                error: 'Database is not configured. Set MONGODB_URI to enable products.'
+            });
+        }
         const product = await Products.find();
         res.render('pages/main-site-pages/home', { 
             product,
